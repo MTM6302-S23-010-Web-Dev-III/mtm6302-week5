@@ -48,3 +48,43 @@ const allColors = [...myColors, ...darkColors]
 
 // using the join() method to join the values in a string
 messageList.children[8].innerHTML += allColors.join(" - ")
+
+/* function doYouHaveColor (colorName) {
+  let colorIndex = allColors.indexOf(colorName)
+  if (colorIndex >= 0) {
+    console.log("Yes, we have this color")
+  } else {
+    console.log("No, we do not have this color")
+  }
+} */
+
+function doYouHaveColor (colorName) {
+  if (allColors.includes(colorName)) {
+    document.getElementById("colorResponse").innerHTML = "Yes, we have this color"
+  } else {
+    document.getElementById("colorResponse").innerHTML = "No, we do not have this color"
+  }
+}
+
+const scores = [43, 68, 35, 82]
+
+const scoreMessageList = document.getElementById("scoreMessages").children
+
+// Using filter() method to find any value grater than 50
+const passingScore = scores.filter(score => score > 50)
+
+scoreMessageList[0].innerHTML += passingScore
+
+// using map() method to map each value with a function
+const doubleScores = scores.map(score => score * 2)
+scoreMessageList[1].innerHTML += doubleScores
+
+// reducing array to single value by running the provided function
+const totalDoubleScore = doubleScores.reduce((accumulator, score) => accumulator + score)
+scoreMessageList[2].innerHTML += totalDoubleScore
+
+const coloredBoxesSection = document.getElementById("coloredBoxes")
+
+for (color of allColors) {
+  coloredBoxesSection.innerHTML += `<div class="box" style="background-color:${color}"></div>`
+}
